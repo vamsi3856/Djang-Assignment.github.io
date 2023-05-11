@@ -1,0 +1,84 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{{ st }}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="{% static '/bootstrap/css/bootstrap.min.css' %}">
+        <style>
+            body {
+              background: linear-gradient(to bottom, #487fd2, #7481e4, #a280f0, #d17af4, #ff71ef);
+              background-size: cover;
+              background-attachment: fixed;
+              height: 100%;
+              overflow: hidden;
+            }
+          </style>
+    </head>
+    <body>
+        <div class="container mt-5 pt-5">
+            <div class="row mb-5">
+                <div class="col-md-8 col-xl-6 text-center mx-auto">
+                    <h2></h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-md-6">
+                <div class="card shadow-lg">
+                  <div class="card-header bg-primary text-white">
+                    <h4 class="card-title mb-0">Student {{st}} Form</h4>
+                  </div>
+                  <div class="card-body m-3">
+                    <form action="" method="POST">
+                      {% csrf_token %}
+                      <div class="form-group">
+                        <label for="{{ form.name.id_for_label }}" class="form-label">Name</label>
+                        <input type="text" class="form-control {{ form.name.errors|yesno:'is-invalid,' }} " id="{{ form.name.id_for_label }}" name="{{ form.name.name }}" value="{{ form.name.value|default:'' }}" placeholder="Enter your name"><br/>
+                        {% if form.name.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in form.name.errors %}
+                          <span>{{ error }}</span>
+                          {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                      <div class="form-group">
+                        <label for="{{ form.department.id_for_label }}" class="form-label">Department</label>
+                        <input type="text" class="form-control {{ form.department.errors|yesno:'is-invalid,' }}" id="{{ form.department.id_for_label }}" name="{{ form.department.name }}" value="{{ form.department.value|default:'' }}" placeholder="Enter your department"><br/>
+                        {% if form.department.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in form.department.errors %}
+                          <span>{{ error }}</span>
+                          {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                      <div class="form-group">
+                        <label for="{{ form.year.id_for_label }}" class="form-label">Year</label>
+                        <input type="number" class="form-control {{ form.year.errors|yesno:'is-invalid,' }}" id="{{ form.year.id_for_label }}" name="{{ form.year.name }}" value="{{ form.year.value|default:'' }}" placeholder="Enter your year"><br/>
+                        {% if form.year.errors %}
+                        <div class="invalid-feedback">
+                          {% for error in form.year.errors %}
+                          <span>{{ error }}</span>
+                          {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+                      <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+        <script src="" async defer></script>
+    </body>
+</html>

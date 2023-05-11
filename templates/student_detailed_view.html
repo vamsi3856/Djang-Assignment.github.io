@@ -1,0 +1,47 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>student detailed view</title>
+    <link rel="stylesheet" href="{% static '/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static '/css/Articles-Cards-images.css' %}">
+    <style>
+        body {
+          background: linear-gradient(to bottom, #487fd2, #7481e4, #a280f0, #d17af4, #ff71ef);
+          background-size: cover;
+          background-attachment: fixed;
+          height: 100%;
+          overflow: hidden;
+        }
+      </style>
+      
+</head>
+
+<body>
+    <div class="container py-4 py-xl-5 ">
+        <div class="row mb-5">
+            <div class="col-md-8 col-xl-6 text-center mx-auto">
+                <h2>Heading</h2>
+            </div>
+        </div>
+        <div class="text-center">
+            <div class="mx-auto card w-50 shadow-lg p-3">
+              <center><img class="card-img-top w-50 d-block fit-cover pt-3" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"></center>
+              <div class="card-body p-4">
+                <h3 class="card-title">Name: <b>{{data.name}}</b></h3>
+                <h4 class="card-text">Department:<b> {{data.department}}</b></h4>
+                <h4 class="card-text">Year: <b>{{data.year}}</b></h4>
+                <a href="{% url 'delete-items' data.id %}" class="btn btn-danger m-2 p-2">Delete student</a>
+                <a href="{% url 'update-items' data.id %}" class="btn btn-warning m-2 p-2">Update student</a>
+              </div>
+            </div>
+          </div>
+    </div>
+    <script src="{% static '/bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>
